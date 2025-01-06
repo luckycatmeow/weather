@@ -26,7 +26,7 @@ def Get5Weather(city):
     response = requests.get(apiUrl, timeout=5)
     return response.json()
 
-def DisplayWeather(data):
+def DisplayWeather(data): # для показа погоды
     if comboBox.current() == 0:
         label["text"] = "Температура: " + str(data["main"]["temp"]-273.15)+ " C"
     else:
@@ -76,8 +76,6 @@ def Graphic():
         time = [time[i] for i in range(0, len(time), 8)]
         time = [datetime.datetime.strptime(i, '%Y-%m-%d %H:%M:%S') for i in time]
         time = [list2[i.weekday()] for i in time]
-
-
 
         fig, ax = plt.subplots(2, 3)
         ax[0, 0].plot(time, temp)
